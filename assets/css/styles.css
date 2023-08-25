@@ -254,3 +254,83 @@ img{
     width: 604px;
   }
 }
+
+
+/*===== NAV =====*/
+@media screen and (max-width: 768px){
+  .nav__menu{
+    /* ... Existing properties ... */
+    width: 100%; /* Change to full width for mobile */
+    padding: 3.5rem 1rem 0; /* Adjust padding for mobile */
+    /* ... Existing properties ... */
+  }
+}
+
+/* ... Existing CSS ... */
+
+/*===== HOME =====*/
+@media screen and (max-width: 768px){
+  .home__container{
+    /* ... Existing properties ... */
+    grid-template-columns: 1fr; /* Change to single column for mobile */
+    /* ... Existing properties ... */
+  }
+  
+  .home__img{
+    /* ... Existing properties ... */
+    order: initial; /* Reset order for mobile */
+    width: 100%; /* Make image width 100% for mobile */
+    /* ... Existing properties ... */
+  }
+
+  .home__img img{
+    /* ... Existing properties ... */
+    width: 100%; /* Make image width 100% for mobile */
+    /* ... Existing properties ... */
+  }
+}
+
+/* ... Existing CSS ... */
+
+/*===== MEDIA QUERIES =====*/
+@media screen and (max-width: 768px){
+  body{
+    /* ... Existing properties ... */
+    margin: 0; /* Adjust margin for mobile */
+    /* ... Existing properties ... */
+  }
+  
+  .nav{
+    /* ... Existing properties ... */
+    height: var(--header-height); /* Reset height for mobile */
+    /* ... Existing properties ... */
+  }
+
+  .nav__toggle, .nav__close{
+    /* ... Existing properties ... */
+    display: block; /* Display toggle and close icons for mobile */
+    /* ... Existing properties ... */
+  }
+
+  .nav__list{
+    /* ... Existing properties ... */
+    display: none; /* Hide nav list for mobile */
+    /* ... Existing properties ... */
+  }
+
+  .nav__item{
+    /* ... Existing properties ... */
+    margin: 1rem 0; /* Adjust margin for mobile */
+    /* ... Existing properties ... */
+  }
+
+  /* ... Existing CSS ... */
+
+  .bd-grid{
+    /* ... Existing properties ... */
+    margin-left: 0;
+    margin-right: 0; /* Remove margins for mobile */
+    /* ... Existing properties ... */
+  }
+}
+
