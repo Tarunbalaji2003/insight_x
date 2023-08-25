@@ -1,69 +1,128 @@
-<?php 
-   session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
-    <title>Login</title>
-</head>
-<body>
-      <div class="container">
-        <div class="box form-box">
-            <?php 
-             
-              include("php/config.php");
-              if(isset($_POST['submit'])){
-                $email = mysqli_real_escape_string($con,$_POST['email']);
-                $password = mysqli_real_escape_string($con,$_POST['password']);
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- =====BOX ICONS===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-                $result = mysqli_query($con,"SELECT * FROM users WHERE Email='$email' AND Password='$password' ") or die("Select Error");
-                $row = mysqli_fetch_assoc($result);
-
-                if(is_array($row) && !empty($row)){
-                    $_SESSION['valid'] = $row['Email'];
-                    $_SESSION['username'] = $row['Username'];
-                    $_SESSION['age'] = $row['Age'];
-                    $_SESSION['id'] = $row['Id'];
-                }else{
-                    echo "<div class='message'>
-                      <p>Wrong Username or Password</p>
-                       </div> <br>";
-                   echo "<a href='index.php'><button class='btn'>Go Back</button>";
-         
-                }
-                if(isset($_SESSION['valid'])){
-                    header("Location: home.php");
-                }
-              }else{
-
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <style>
             
-            ?>
-            <header>Login</header>
-            <form action="" method="post">
-                <div class="field input">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" autocomplete="off" required>
+            
+.sumugan{
+  animation: glitch 1s linear infinite;
+  font-size: 80px;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+.sumugan:before,
+.sumugan:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.sumugan:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+.sumugan:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
+</style>
+
+  <title>INSIGHT_X</title>
+    </head>
+    <body>
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">Bannari Amman Institute Of Technology</a>
+                </div>
+                
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
                 </div>
 
-                <div class="field input">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" autocomplete="off" required>
-                </div>
+                <div class="nav__menu" id="nav-menu">
+                    <div class="nav__close" id="nav-close">
+                        <i class='bx bx-x'></i>
+                    </div>
 
-                <div class="field">
-                    
-                    <input type="submit" class="btn" name="submit" value="Login" required>
+                    <ul class="nav__list">  
+                        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                        <li class="nav__item"><a href="about.htm" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                    </ul>
                 </div>
-                <div class="links">
-                    Don't have account? <a href="register.php">Sign Up Now</a>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--===== HOME =====-->
+            <section class="home" id="home">
+                <div class="home__container bd-grid">
+                    <div class="home__img">
+                        <img src="assets/img/INSIGHT.png" alt="" data-speed="-2">
+                    </div>
+
+                    <div class="home__data"> 
+                        <!-- <h1 class="home__title">INSIGHT_X</h1> -->
+                       <h1> <div class="sumugan" title="INSIGHT ">INSIGHT <span style="color:#FF007B">X</span></div> </h1> 
+                        <p class="home__description">A Event Conducted by AI & DS Students <br> Bannari Amman Institute Of Technology</p>
+                        <a href="http://127.0.0.1:5500/selection.htm" class="home__button">Get Started</a>
+                    </div>
                 </div>
-            </form>
-        </div>
-        <?php } ?>
-      </div>
-</body>
+            </section>
+        </main>
+
+        <!--===== GSAP =====-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+        
+
+        <!--===== MAIN JS =====-->
+        <script src="assets/js/main.js"></script>
+    </body>
 </html>
